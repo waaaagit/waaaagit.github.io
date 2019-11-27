@@ -1,0 +1,76 @@
+I" <p>The navigation is dynamic, so you don’t have to manually add every page.</p>
+
+<p>In this section I’ll just quickly plop in the code, in case you would like to have the fourth level displayed as well.</p>
+
+<p><strong>default 3-level:</strong></p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">"nav"</span><span class="nt">&gt;</span>
+    {% assign level-1 = site.entries | where: "sectionclass", "h1" | sort: "number"%}
+    {% for entry in level-1 %}
+    <span class="nt">&lt;li</span> <span class="err">{%</span> <span class="na">if</span> <span class="na">entry</span><span class="err">.</span><span class="na">is-parent</span> <span class="na">or</span> <span class="na">forloop</span><span class="err">.</span><span class="na">first</span> <span class="err">%}</span> <span class="na">class=</span><span class="s">"{% if entry.is-parent %}parent{% endif %}{% if forloop.first %} current{% endif %}"</span><span class="err">{%</span> <span class="na">endif</span> <span class="err">%}</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#{{ entry.sectionid }}"</span><span class="nt">&gt;</span>{{ entry.title }}<span class="nt">&lt;/a&gt;</span>
+        {% if entry.is-parent %}
+            <span class="nt">&lt;ul&gt;</span>
+                {% assign level-2 = site.entries | where: "parent-id", entry.sectionid | sort: "number" %}
+                {% for child in level-2 %}
+                    <span class="nt">&lt;li</span> <span class="err">{%</span> <span class="na">if</span> <span class="na">child</span><span class="err">.</span><span class="na">is-parent</span> <span class="err">%}</span><span class="na">class=</span><span class="s">"parent"</span><span class="err">{%</span> <span class="na">endif</span> <span class="err">%}</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#{{ child.sectionid }}"</span><span class="nt">&gt;</span>{{ child.title }}<span class="nt">&lt;/a&gt;</span>
+                        {% if child.is-parent %}
+                            <span class="nt">&lt;ul&gt;</span>
+                                {% assign level-3 = site.entries | where: "parent-id", child.sectionid | sort: "number" %}
+                                {% for grandchild in level-3 %}
+                                <span class="nt">&lt;li&gt;</span>
+                                    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#{{ grandchild.sectionid }}"</span><span class="nt">&gt;</span>{{ grandchild.title }}<span class="nt">&lt;/a&gt;</span>
+                                <span class="nt">&lt;/li&gt;</span>
+                                {% endfor %}
+                            <span class="nt">&lt;/ul&gt;</span>
+                        {% endif %}
+                    <span class="nt">&lt;/li&gt;</span>
+                {% endfor %}
+            <span class="nt">&lt;/ul&gt;</span>
+        {% endif %}
+    <span class="nt">&lt;/li&gt;</span>
+    {% endfor %}
+<span class="nt">&lt;/ul&gt;</span></code></pre></figure>
+
+<p><strong>4-level nav:</strong></p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">"nav"</span><span class="nt">&gt;</span>
+    {% assign level-1 = site.entries | where: "sectionclass", "h1" | sort: "number"%}
+    {% for entry in level-1 %}
+    <span class="nt">&lt;li</span> <span class="err">{%</span> <span class="na">if</span> <span class="na">entry</span><span class="err">.</span><span class="na">is-parent</span> <span class="na">or</span> <span class="na">forloop</span><span class="err">.</span><span class="na">first</span> <span class="err">%}</span> <span class="na">class=</span><span class="s">"{% if entry.is-parent %}parent{% endif %}{% if forloop.first %} current{% endif %}"</span><span class="err">{%</span> <span class="na">endif</span> <span class="err">%}</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#{{ entry.sectionid }}"</span><span class="nt">&gt;</span>{{ entry.title }}<span class="nt">&lt;/a&gt;</span>
+        {% if entry.is-parent %}
+            <span class="nt">&lt;ul&gt;</span>
+                {% assign level-2 = site.entries | where: "parent-id", entry.sectionid | sort: "number" %}
+                {% for child in level-2 %}
+                    <span class="nt">&lt;li</span> <span class="err">{%</span> <span class="na">if</span> <span class="na">child</span><span class="err">.</span><span class="na">is-parent</span> <span class="err">%}</span><span class="na">class=</span><span class="s">"parent"</span><span class="err">{%</span> <span class="na">endif</span> <span class="err">%}</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#{{ child.sectionid }}"</span><span class="nt">&gt;</span>{{ child.title }}<span class="nt">&lt;/a&gt;</span>
+                        {% if child.is-parent %}
+                            <span class="nt">&lt;ul&gt;</span>
+                                {% assign level-3 = site.entries | where: "parent-id", child.sectionid | sort: "number" %}
+                                {% for grandchild in level-3 %}
+                                <span class="nt">&lt;li&gt;</span>
+                                    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#{{ grandchild.sectionid }}"</span><span class="nt">&gt;</span>{{ grandchild.title }}<span class="nt">&lt;/a&gt;</span>
+                                    {% if grandchild.is-parent %}
+                                    <span class="nt">&lt;ul&gt;</span>
+                                        {% assign level-4 = site.entries | where: "parent-id", grandchild.sectionid | sort: "number" %}
+                                        {% for great-grandchild in level-4 %}
+                                        <span class="nt">&lt;li&gt;</span>
+                                            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#{{ great-grandchild.sectionid }}"</span><span class="nt">&gt;</span>{{ great-grandchild.title }}<span class="nt">&lt;/a&gt;</span>
+                                        <span class="nt">&lt;/li&gt;</span>
+                                        {% endfor %}
+                                    <span class="nt">&lt;/ul&gt;</span>
+                                    {% endif %}
+                                <span class="nt">&lt;/li&gt;</span>
+                                {% endfor %}
+                            <span class="nt">&lt;/ul&gt;</span>
+                        {% endif %}
+                    <span class="nt">&lt;/li&gt;</span>
+                {% endfor %}
+            <span class="nt">&lt;/ul&gt;</span>
+        {% endif %}
+    <span class="nt">&lt;/li&gt;</span>
+    {% endfor %}
+<span class="nt">&lt;/ul&gt;</span></code></pre></figure>
+:ET

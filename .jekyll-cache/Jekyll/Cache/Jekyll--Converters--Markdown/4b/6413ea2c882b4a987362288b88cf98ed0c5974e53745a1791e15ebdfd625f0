@@ -1,0 +1,17 @@
+I"�<p>A Subsection of a level 4 will look like this</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
+<span class="na">sectionid</span><span class="pi">:</span> <span class="s">UNIQUE-ID</span>
+<span class="na">sectionclass</span><span class="pi">:</span> <span class="s">h4</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">TITLE</span>
+<span class="na">parent-id</span><span class="pi">:</span> <span class="s">UNIQUE-ID-Of-PARENT</span>
+<span class="nn">---</span></code></pre></figure>
+
+<p>So the <code class="highlighter-rouge">parent-id</code> is where you will reference the anchor of the h3 section that’s your subsections parent.</p>
+
+<p>Level 4 sections can’t have any more children within sections, but you if you add a h5 title, it will still have the numbering.</p>
+
+<h5 id="proof-here">Proof here</h5>
+
+<p>Told ya! (it will not work on h6 though )</p>
+:ET

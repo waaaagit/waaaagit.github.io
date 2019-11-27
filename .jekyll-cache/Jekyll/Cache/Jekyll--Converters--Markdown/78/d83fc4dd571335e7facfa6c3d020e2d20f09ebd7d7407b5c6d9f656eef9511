@@ -1,0 +1,17 @@
+I"w<p>There is very few configuration to be done before you are up and running, still the ones you need to add, are as follows:</p>
+
+<p>In the <code class="highlighter-rouge">_config.yml</code>-file:</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="c1"># name of the docs</span>
+<span class="na">name</span><span class="pi">:</span> <span class="s">Docster Documentation</span>
+
+<span class="c1"># docs author</span>
+<span class="na">author</span><span class="pi">:</span> <span class="s">DigitalMind</span>
+
+<span class="c1"># docs version</span>
+<span class="na">version</span><span class="pi">:</span> <span class="s">V 1.0</span></code></pre></figure>
+
+<p>All of these infos will be displayed on the top left-hand corner.</p>
+
+<p>Of course you can also go in and change the sass-output-format or change whatever else you want to adjust.</p>
+:ET

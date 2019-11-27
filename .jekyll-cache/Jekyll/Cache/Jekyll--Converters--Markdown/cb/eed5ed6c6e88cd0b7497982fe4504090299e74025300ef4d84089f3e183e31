@@ -1,0 +1,14 @@
+I"ó<p>If you want to create one of the main sections, you will need to include the following front matter within your entry:</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
+<span class="na">sectionid</span><span class="pi">:</span> <span class="s">UNIQUE-ID</span>
+<span class="na">sectionclass</span><span class="pi">:</span> <span class="s">h1</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">TITLE</span>
+<span class="nn">---</span></code></pre></figure>
+
+<p>If you want your section to have subsections, add</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">is-parent</span><span class="pi">:</span> <span class="s">yes</span></code></pre></figure>
+
+<p>The ID is important, because it will be used as the anchor for the scrollToLinks and it is also used within the subsections. So each child needs to tell jekyll what its parent is, before it can be placed correctly.</p>
+:ET
